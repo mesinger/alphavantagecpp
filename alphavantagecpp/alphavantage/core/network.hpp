@@ -4,13 +4,14 @@
 #include <curl/curl.h>
 #include <iostream>
 #include <vector>
+#include <memory>
+
+#define CURL_MAX_RSP_SIZE 100000 // max size for response 100k
 
 namespace alphavantage {
 	namespace network {
 
-
-
-		namespace https {
+		namespace http {
 
 			//forward declarations
 
@@ -28,15 +29,16 @@ namespace alphavantage {
 				/*
 				performs http request to given url
 				and stores response in buf
+				returns num of bytes read, or -1
 				*/
-				bool send(const std::string& url, char* buf, size_t szbuf) {
+				int send(const std::string& url, char* buf, size_t szbuf) {
 
 					if (!buf || szbuf <= 0) return false;
 
 					calleeBuffer = buf;
 					szCalleeBuffer = szbuf;
 
-					CURL* curl;
+					CURL * curl;
 					CURLcode res;
 
 					curl_global_init(CURL_GLOBAL_DEFAULT);
@@ -62,12 +64,16 @@ namespace alphavantage {
 
 					curl_global_cleanup();
 
-					if (res != CURLE_OK)
-						fprintf(stderr, "curl_easy_perform() failed: %s\n", curl_easy_strerror(res));
+					size_t readBytes = szReceivedData;
 
 					reset();
 
-					return res == CURLE_OK;
+					if (res != CURLE_OK) {
+						fprintf(stderr, "curl_easy_perform() failed: %s\n", curl_easy_strerror(res));
+						return -1;
+					}
+
+					return readBytes;
 				}
 
 			protected:
@@ -107,5 +113,31 @@ namespace alphavantage {
 				return nmemb;
 			}
 		}
+
+		class Request{
+		public:
+
+			Request(const std::string& url) :url(url){}
+			virtual ~Request() = default;
+
+			virtual bool send(std::string& response) const {
+
+				http::CurlRequest httpreq;
+
+				std::unique_ptr<char[]> buf = std::make_unique<char[]>(CURL_MAX_RSP_SIZE);
+
+				int readBytes = httpreq.send(url, buf.get(), CURL_MAX_RSP_SIZE);
+
+				if (readBytes == -1) return false;
+
+				response = std::string(buf.get(), readBytes);
+
+				return true;
+			}
+
+		protected:
+
+			std::string url;
+		};
 	}
 }
