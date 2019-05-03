@@ -23,6 +23,7 @@ namespace alphavantage {
 			virtual ~IAPIParamOutputsize() = default;
 
 			virtual OUTPUTSIZE getApiOutputsize() const;
+			virtual std::string getApiOutputsizeStr() const;
 
 		protected:
 

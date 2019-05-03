@@ -1,31 +1,28 @@
-#include "apifunction.hpp"
-#include "apidatatype.hpp"
-#include "apiinterval.hpp"
-#include "apikey.hpp"
-#include "apioutputsize.hpp"
-#include "apisymbol.hpp"
+#include "apiparams.hpp"
 
-alphavantage::api::IAPIParamDatatype::IAPIParamDatatype(const std::string &datatype)
+using namespace alphavantage::api;
+
+IAPIParamDatatype::IAPIParamDatatype(const std::string &datatype)
 	:apiDataTypeString(datatype), apiDatatype(getApiDataTypeAsInt(datatype))
 {
 }
 
-alphavantage::api::IAPIParamDatatype::IAPIParamDatatype(DATATYPE datatype)
+IAPIParamDatatype::IAPIParamDatatype(DATATYPE datatype)
 	:apiDatatype(datatype), apiDataTypeString(getApiDataTypeAsString(datatype))
 {
 }
 
-std::string alphavantage::api::IAPIParamDatatype::getApiDatatypeStr() const
+std::string IAPIParamDatatype::getApiDatatypeStr() const
 {
 	return apiDataTypeString;
 }
 
-alphavantage::api::DATATYPE alphavantage::api::IAPIParamDatatype::getApiDatatype() const
+DATATYPE IAPIParamDatatype::getApiDatatype() const
 {
 	return apiDatatype;
 }
 
-std::string alphavantage::api::IAPIParamDatatype::getApiDataTypeAsString(alphavantage::api::DATATYPE datatype) const
+std::string IAPIParamDatatype::getApiDataTypeAsString(DATATYPE datatype) const
 {
 	switch(datatype){
 		case API_DATATYPE_JSON:
@@ -37,7 +34,7 @@ std::string alphavantage::api::IAPIParamDatatype::getApiDataTypeAsString(alphava
 	}
 }
 
-alphavantage::api::DATATYPE alphavantage::api::IAPIParamDatatype::getApiDataTypeAsInt(const std::string &datatype) const
+DATATYPE IAPIParamDatatype::getApiDataTypeAsInt(const std::string &datatype) const
 {
 	if(datatype == API_DATATYPE_JSON_STR)
 		return API_DATATYPE_JSON;
@@ -47,37 +44,37 @@ alphavantage::api::DATATYPE alphavantage::api::IAPIParamDatatype::getApiDataType
 	return -1;
 }
 
-alphavantage::api::IAPIParamFunction::IAPIParamFunction(const std::string& function)
+IAPIParamFunction::IAPIParamFunction(const std::string& function)
 	:apiFunction(function)
 {
 }
 
-std::string alphavantage::api::IAPIParamFunction::getApiFunction() const
+std::string IAPIParamFunction::getApiFunction() const
 {
 	return apiFunction;
 }
 
-alphavantage::api::IAPIParamInterval::IAPIParamInterval(INTERVAL interval)
+IAPIParamInterval::IAPIParamInterval(INTERVAL interval)
 	:apiInterval(interval), apiIntervalString(getApiIntervalAsString(interval))
 {
 }
 
-alphavantage::api::IAPIParamInterval::IAPIParamInterval(const std::string& interval)
+IAPIParamInterval::IAPIParamInterval(const std::string& interval)
 	:apiIntervalString(interval), apiInterval(getApiIntervalAsInt(interval))
 {
 }
 
-std::string alphavantage::api::IAPIParamInterval::getApiIntervalStr() const
+std::string IAPIParamInterval::getApiIntervalStr() const
 {
 	return apiIntervalString;
 }
 
-alphavantage::api::INTERVAL alphavantage::api::IAPIParamInterval::getApiInterval() const
+INTERVAL IAPIParamInterval::getApiInterval() const
 {
 	return apiInterval;
 }
 
-std::string alphavantage::api::IAPIParamInterval::getApiIntervalAsString(INTERVAL interval) const
+std::string IAPIParamInterval::getApiIntervalAsString(INTERVAL interval) const
 {
 	switch (interval) {
 	case API_INTERVAL_1MIN:
@@ -95,7 +92,7 @@ std::string alphavantage::api::IAPIParamInterval::getApiIntervalAsString(INTERVA
 	}
 }
 
-alphavantage::api::INTERVAL alphavantage::api::IAPIParamInterval::getApiIntervalAsInt(const std::string& interval) const
+INTERVAL IAPIParamInterval::getApiIntervalAsInt(const std::string& interval) const
 {
 	if (interval == API_INTERVAL_1MIN_STR)
 		return API_INTERVAL_1MIN;
@@ -111,32 +108,37 @@ alphavantage::api::INTERVAL alphavantage::api::IAPIParamInterval::getApiInterval
 	return -1;
 }
 
-alphavantage::api::IAPIParamApikey::IAPIParamApikey(const std::string& key)
+IAPIParamApikey::IAPIParamApikey(const std::string& key)
 	:apiKey(key)
 {
 }
 
-std::string alphavantage::api::IAPIParamApikey::getApiKey() const
+std::string IAPIParamApikey::getApiKey() const
 {
 	return apiKey;
 }
 
-alphavantage::api::IAPIParamOutputsize::IAPIParamOutputsize(OUTPUTSIZE size)
+IAPIParamOutputsize::IAPIParamOutputsize(OUTPUTSIZE size)
 	:apiOutputsize(size), apiOutputsizeString(getApiOutputsizeAsString(size))
 {
 }
 
-alphavantage::api::IAPIParamOutputsize::IAPIParamOutputsize(const std::string& size)
+IAPIParamOutputsize::IAPIParamOutputsize(const std::string& size)
 	:apiOutputsizeString(size), apiOutputsize(getApiOutputsizeAsInt(size))
 {
 }
 
-alphavantage::api::OUTPUTSIZE alphavantage::api::IAPIParamOutputsize::getApiOutputsize() const
+OUTPUTSIZE IAPIParamOutputsize::getApiOutputsize() const
 {
 	return apiOutputsize;
 }
 
-std::string alphavantage::api::IAPIParamOutputsize::getApiOutputsizeAsString(OUTPUTSIZE size) const
+std::string alphavantage::api::IAPIParamOutputsize::getApiOutputsizeStr() const
+{
+	return apiOutputsizeString;
+}
+
+std::string IAPIParamOutputsize::getApiOutputsizeAsString(OUTPUTSIZE size) const
 {
 	switch (size) {
 	case API_OUTPUTSIZE_COMPACT:
@@ -148,7 +150,7 @@ std::string alphavantage::api::IAPIParamOutputsize::getApiOutputsizeAsString(OUT
 	}
 }
 
-alphavantage::api::DATATYPE alphavantage::api::IAPIParamOutputsize::getApiOutputsizeAsInt(const std::string& size) const
+DATATYPE IAPIParamOutputsize::getApiOutputsizeAsInt(const std::string& size) const
 {
 	if (size == API_OUTPUTSIZE_COMPACT_STR)
 		return API_OUTPUTSIZE_COMPACT;
@@ -158,12 +160,12 @@ alphavantage::api::DATATYPE alphavantage::api::IAPIParamOutputsize::getApiOutput
 	return -1;
 }
 
-alphavantage::api::IAPIParamSymbol::IAPIParamSymbol(const std::string& symb)
+IAPIParamSymbol::IAPIParamSymbol(const std::string& symb)
 	:apiSymbol(symb)
 {
 }
 
-std::string alphavantage::api::IAPIParamSymbol::getApiSymbol() const
+std::string IAPIParamSymbol::getApiSymbol() const
 {
 	return apiSymbol;
 }
