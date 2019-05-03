@@ -1,6 +1,6 @@
 #pragma once
 
-#include "generic.hpp"
+#include "genericparam.hpp"
 
 namespace alphavantage {
 	namespace api {
@@ -15,9 +15,9 @@ namespace alphavantage {
 
 			virtual std::string getApiKey() const;
 
-		protected:
-
 			virtual std::string getAsUrlParam() const override;
+
+		protected:
 
 			std::string apiKey;
 		};

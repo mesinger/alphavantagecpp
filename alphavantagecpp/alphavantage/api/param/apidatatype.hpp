@@ -1,6 +1,6 @@
 #pragma once
 
-#include "generic.hpp"
+#include "genericparam.hpp"
 
 //datatype
 #define API_DATATYPE_JSON 1
@@ -26,9 +26,9 @@ namespace alphavantage {
 			virtual std::string getApiDatatypeStr() const;
 			virtual DATATYPE getApiDatatype() const;
 
-		protected:
-
 			virtual std::string getAsUrlParam() const override;
+
+		protected:
 
 			DATATYPE apiDatatype;
 			std::string apiDataTypeString;

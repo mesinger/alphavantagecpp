@@ -135,7 +135,7 @@ std::string IAPIParamApikey::getApiKey() const
 
 std::string alphavantage::api::IAPIParamApikey::getAsUrlParam() const
 {
-	return "key=" + apiKey;
+	return "apikey=" + apiKey;
 }
 
 IAPIParamOutputsize::IAPIParamOutputsize(OUTPUTSIZE size)

@@ -1,6 +1,6 @@
 #pragma once
 
-#include "generic.hpp"
+#include "genericparam.hpp"
 
 //interval
 #define API_INTERVAL_1MIN 1
@@ -32,9 +32,9 @@ namespace alphavantage {
 			virtual std::string getApiIntervalStr() const;
 			virtual INTERVAL getApiInterval() const;
 
-		protected:
-
 			virtual std::string getAsUrlParam() const override;
+
+		protected:
 
 			INTERVAL apiInterval;
 			std::string apiIntervalString;

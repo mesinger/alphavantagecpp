@@ -1,6 +1,6 @@
 #pragma once
 
-#include "generic.hpp"
+#include "genericparam.hpp"
 
 //outputsize
 #define API_OUTPUTSIZE_COMPACT 1
@@ -25,9 +25,9 @@ namespace alphavantage {
 			virtual OUTPUTSIZE getApiOutputsize() const;
 			virtual std::string getApiOutputsizeStr() const;
 
-		protected:
-
 			virtual std::string getAsUrlParam() const override;
+
+		protected:
 
 			OUTPUTSIZE apiOutputsize;
 			std::string apiOutputsizeString;

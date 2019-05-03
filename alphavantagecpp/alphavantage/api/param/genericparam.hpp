@@ -9,7 +9,7 @@ namespace alphavantage::api {
 	*/
 	class IAPIParam {
 
-	protected:
+	public:
 
 		virtual std::string getAsUrlParam() const = 0;
 	};
