@@ -1,6 +1,6 @@
 #pragma once
 
-#include <string>
+#include "generic.hpp"
 
 //datatype
 #define API_DATATYPE_JSON 1
@@ -14,7 +14,7 @@ namespace alphavantage {
 		typedef int DATATYPE;
 
 		//this request requieres datatype parameter
-		class IAPIParamDatatype {
+		class IAPIParamDatatype : public IAPIParam{
 
 		public:
 
@@ -27,6 +27,8 @@ namespace alphavantage {
 			virtual DATATYPE getApiDatatype() const;
 
 		protected:
+
+			virtual std::string getAsUrlParam() const override;
 
 			DATATYPE apiDatatype;
 			std::string apiDataTypeString;

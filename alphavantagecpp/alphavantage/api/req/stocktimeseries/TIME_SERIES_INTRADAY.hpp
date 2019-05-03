@@ -1,6 +1,6 @@
 #pragma once
 
-#include "api/req/generic.hpp"
+#include "genericstocktimeseries.hpp"
 
 namespace alphavantage::req {
 

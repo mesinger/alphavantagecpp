@@ -1,6 +1,6 @@
 #pragma once
 
-#include <string>
+#include "generic.hpp"
 
 //interval
 #define API_INTERVAL_1MIN 1
@@ -20,7 +20,7 @@ namespace alphavantage {
 		typedef int INTERVAL;
 
 		//this request requieres inteval parameter
-		class IAPIParamInterval {
+		class IAPIParamInterval : public IAPIParam{
 
 		public:
 
@@ -33,6 +33,8 @@ namespace alphavantage {
 			virtual INTERVAL getApiInterval() const;
 
 		protected:
+
+			virtual std::string getAsUrlParam() const override;
 
 			INTERVAL apiInterval;
 			std::string apiIntervalString;

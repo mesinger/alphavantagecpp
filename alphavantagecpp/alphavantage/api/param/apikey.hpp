@@ -1,12 +1,12 @@
 #pragma once
 
-#include <string>
+#include "generic.hpp"
 
 namespace alphavantage {
 	namespace api {
 
 		//this request requieres apikey parameter
-		class IAPIParamApikey {
+		class IAPIParamApikey : public IAPIParam{
 
 		public:
 
@@ -16,6 +16,8 @@ namespace alphavantage {
 			virtual std::string getApiKey() const;
 
 		protected:
+
+			virtual std::string getAsUrlParam() const override;
 
 			std::string apiKey;
 		};

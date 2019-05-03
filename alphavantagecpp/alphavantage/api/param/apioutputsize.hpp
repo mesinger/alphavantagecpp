@@ -1,6 +1,6 @@
 #pragma once
 
-#include <string>
+#include "generic.hpp"
 
 //outputsize
 #define API_OUTPUTSIZE_COMPACT 1
@@ -14,7 +14,7 @@ namespace alphavantage {
 		typedef int OUTPUTSIZE;
 
 		//this request requieres outputsize parameter
-		class IAPIParamOutputsize {
+		class IAPIParamOutputsize : public IAPIParam{
 
 		public:
 
@@ -26,6 +26,8 @@ namespace alphavantage {
 			virtual std::string getApiOutputsizeStr() const;
 
 		protected:
+
+			virtual std::string getAsUrlParam() const override;
 
 			OUTPUTSIZE apiOutputsize;
 			std::string apiOutputsizeString;
