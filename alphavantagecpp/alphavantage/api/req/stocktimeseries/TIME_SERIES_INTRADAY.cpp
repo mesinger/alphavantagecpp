@@ -4,8 +4,8 @@
 namespace nw = alphavantage::network::http;
 using namespace alphavantage::api;
 
-alphavantage::req::TIME_SERIES_INTRADAY::TIME_SERIES_INTRADAY(const std::string& function, const std::string& symbol, const std::string& key, const std::string& outputsize = API_OUTPUTSIZE_COMPACT_STR, const std::string& datatype = API_DATATYPE_JSON_STR)
-	:IStockTimeSeries(function, datatype, key, outputsize), IAPIParamSymbol(symbol)
+alphavantage::req::TIME_SERIES_INTRADAY::TIME_SERIES_INTRADAY(const std::string& symbol, const std::string& interval, const std::string& key, const std::string& outputsize, const std::string& datatype)
+	:IStockTimeSeries("TIME_SERIES_INTRADAY", datatype, key, outputsize), IAPIParamSymbol(symbol), IAPIParamInterval(interval)
 {
 }
 
@@ -30,8 +30,9 @@ std::string alphavantage::req::TIME_SERIES_INTRADAY::getUrl() const
 
 	url += "?function=" + getApiFunction();
 	url += "&symbol=" + getApiSymbol();
+	url += "&interval=" + getApiIntervalStr();
 	url += "&outputsize=" + getApiOutputsizeStr();
-	url += "&datatype=" + getApiDatatype();
+	url += "&datatype=" + getApiDatatypeStr();
 	url += "&apikey=" + getApiKey();
 
 	return url;
