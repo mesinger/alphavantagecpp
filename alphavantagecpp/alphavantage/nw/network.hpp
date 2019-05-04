@@ -6,7 +6,7 @@
 #include <vector>
 #include <memory>
 
-#define CURL_MAX_RSP_SIZE 100000 // max size for response 100k
+#define CURL_MAX_RSP_SIZE 1000000 // max size for response 1M
 
 namespace alphavantage {
 	namespace network {

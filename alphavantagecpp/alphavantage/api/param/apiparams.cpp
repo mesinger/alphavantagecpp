@@ -22,7 +22,7 @@ DATATYPE IAPIParamDatatype::getApiDatatype() const
 	return apiDatatype;
 }
 
-std::string alphavantage::api::IAPIParamDatatype::getAsUrlParam() const
+std::string IAPIParamDatatype::getAsUrlParam() const
 {
 	return "datatype=" + apiDataTypeString;
 }
@@ -59,7 +59,7 @@ std::string IAPIParamFunction::getApiFunction() const
 	return apiFunction;
 }
 
-std::string alphavantage::api::IAPIParamFunction::getAsUrlParam() const
+std::string IAPIParamFunction::getAsUrlParam() const
 {
 	return "function=" + apiFunction;
 }
@@ -84,7 +84,7 @@ INTERVAL IAPIParamInterval::getApiInterval() const
 	return apiInterval;
 }
 
-std::string alphavantage::api::IAPIParamInterval::getAsUrlParam() const
+std::string IAPIParamInterval::getAsUrlParam() const
 {
 	return "interval=" + apiIntervalString;
 }
@@ -133,7 +133,7 @@ std::string IAPIParamApikey::getApiKey() const
 	return apiKey;
 }
 
-std::string alphavantage::api::IAPIParamApikey::getAsUrlParam() const
+std::string IAPIParamApikey::getAsUrlParam() const
 {
 	return "apikey=" + apiKey;
 }
@@ -153,12 +153,12 @@ OUTPUTSIZE IAPIParamOutputsize::getApiOutputsize() const
 	return apiOutputsize;
 }
 
-std::string alphavantage::api::IAPIParamOutputsize::getApiOutputsizeStr() const
+std::string IAPIParamOutputsize::getApiOutputsizeStr() const
 {
 	return apiOutputsizeString;
 }
 
-std::string alphavantage::api::IAPIParamOutputsize::getAsUrlParam() const
+std::string IAPIParamOutputsize::getAsUrlParam() const
 {
 	return "outputsize=" + apiOutputsizeString;
 }
@@ -195,7 +195,22 @@ std::string IAPIParamSymbol::getApiSymbol() const
 	return apiSymbol;
 }
 
-std::string alphavantage::api::IAPIParamSymbol::getAsUrlParam() const
+std::string IAPIParamSymbol::getAsUrlParam() const
 {
 	return "symbol=" + apiSymbol;
+}
+
+IAPIParamKeywords::IAPIParamKeywords(const std::string& keywords)
+	:apiKeywords(keywords)
+{
+}
+
+std::string alphavantage::api::IAPIParamKeywords::getApiKeywords() const
+{
+	return apiKeywords;
+}
+
+std::string alphavantage::api::IAPIParamKeywords::getAsUrlParam() const
+{
+	return "keywords=" + apiKeywords;
 }

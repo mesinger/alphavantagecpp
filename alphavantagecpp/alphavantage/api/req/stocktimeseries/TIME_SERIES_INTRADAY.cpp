@@ -8,5 +8,4 @@ alphavantage::req::TIME_SERIES_INTRADAY::TIME_SERIES_INTRADAY(const std::string&
 	addToUrl(IAPIParamSymbol, symbol);
 	addToUrl(IAPIParamInterval, interval);
 	addToUrl(IAPIParamOutputsize, outputsize);
-	addToUrl(IAPIParamDatatype, datatype);
 }
