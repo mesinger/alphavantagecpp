@@ -65,16 +65,15 @@ Request::Request(const std::string& url)
 	:url(url)
 {}
 
-bool Request::send(std::string& response) const {
-
-	http::CurlRequest httpreq;
+bool Request::send(std::string& response) {
 
 	std::unique_ptr<char[]> buf = std::make_unique<char[]>(CURL_MAX_RSP_SIZE);
 
-	long status;
-	int readBytes = httpreq.send(url, buf.get(), CURL_MAX_RSP_SIZE, &status);
+	long httpStatusCode;
+	int readBytes = http::CurlRequest::send(url, buf.get(), CURL_MAX_RSP_SIZE, &httpStatusCode);
 
 	if (readBytes == -1) return false;
+	if (httpStatusCode != HTTP_STATUS_OK) return false;
 
 	response = std::string(buf.get(), readBytes);
 

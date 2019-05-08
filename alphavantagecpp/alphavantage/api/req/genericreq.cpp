@@ -3,7 +3,7 @@
 #include "util/stringutil.hpp"
 
 using namespace alphavantage::api;
-namespace nw = alphavantage::network::http;
+namespace nw = alphavantage::network;
 
 alphavantage::req::IGenericRequest::IGenericRequest(const std::string& function, const std::string& key)
 {
@@ -13,22 +13,18 @@ alphavantage::req::IGenericRequest::IGenericRequest(const std::string& function,
 
 std::string alphavantage::req::IGenericRequest::load()
 {
-	auto conn = nw::CurlRequest();
+	auto conn = nw::Request(getUrl());
 
-	std::unique_ptr<char[]> rsp = std::make_unique<char[]>(CURL_MAX_RSP_SIZE);
+	std::string rsp;
+	bool sentSuccessfully = conn.send(rsp);
 
-	long httpStatusCode;
-	int read = conn.send(getUrl(), rsp.get(), CURL_MAX_RSP_SIZE, &httpStatusCode);
+	if (sentSuccessfully) {
 
-	if (read > 0 && httpStatusCode == HTTP_STATUS_OK) {
+		bool responseContainsError = util::string::contains(rsp, { "error" }, false);
 
-		std::string msg(rsp.get());
+		lastRequestSucceded = !responseContainsError;
 
-		bool responseContainsError = util::string::contains(msg, { "error" }, false);
-
-		lastRequestSucceded = responseContainsError;
-
-		return msg;
+		return rsp;
 	}
 
 	lastRequestSucceded = false;

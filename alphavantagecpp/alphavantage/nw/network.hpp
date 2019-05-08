@@ -20,9 +20,8 @@ namespace alphavantage {
 			class to perform http requests with curl
 			*/
 			class CurlRequest {
-			public:
-				CurlRequest() = default;
-				virtual ~CurlRequest() = default;
+
+			protected:
 
 				/*
 				performs http request to given url
@@ -32,12 +31,13 @@ namespace alphavantage {
 				*/
 				int send(const std::string& url, char* buf, size_t szbuf, long* phttpStatusCode);
 
-			protected:
+				CurlRequest() = default;
+				virtual ~CurlRequest() = default;
+
+			private:
 
 				//resets buffers for curl parsing
 				void reset();
-
-			private:
 
 				//buffer to store response
 				char* calleeBuffer = nullptr;
@@ -50,13 +50,13 @@ namespace alphavantage {
 			};
 		}
 
-		class Request{
+		class Request : public http::CurlRequest {
 		public:
 
 			Request(const std::string& url);
 			virtual ~Request() = default;
 
-			virtual bool send(std::string& response) const;
+			virtual bool send(std::string& response);
 
 		protected:
 
