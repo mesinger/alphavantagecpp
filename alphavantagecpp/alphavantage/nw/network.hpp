@@ -7,6 +7,7 @@
 #include <memory>
 
 #define CURL_MAX_RSP_SIZE 1000000 // max size for response 1M
+#define HTTP_STATUS_OK 200
 
 namespace alphavantage {
 	namespace network {
@@ -26,9 +27,10 @@ namespace alphavantage {
 				/*
 				performs http request to given url
 				and stores response in buf
+				and http statuscode in phttpStatusCode
 				returns num of bytes read, or -1
 				*/
-				int send(const std::string& url, char* buf, size_t szbuf);
+				int send(const std::string& url, char* buf, size_t szbuf, long* phttpStatusCode);
 
 			protected:
 

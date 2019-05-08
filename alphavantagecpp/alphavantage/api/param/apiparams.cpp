@@ -214,3 +214,63 @@ std::string alphavantage::api::IAPIParamKeywords::getAsUrlParam() const
 {
 	return "keywords=" + apiKeywords;
 }
+
+IAPIParamFromCurrency::IAPIParamFromCurrency(const std::string& from_currency)
+	:apiFromCurrency(from_currency)
+{
+}
+
+std::string alphavantage::api::IAPIParamFromCurrency::getApiFromCurrency() const
+{
+	return apiFromCurrency;
+}
+
+std::string alphavantage::api::IAPIParamFromCurrency::getAsUrlParam() const
+{
+	return "from_currency=" + apiFromCurrency;
+}
+
+IAPIParamToCurrency::IAPIParamToCurrency(const std::string& from_currency)
+	:apiToCurrency(from_currency)
+{
+}
+
+std::string alphavantage::api::IAPIParamToCurrency::getApiToCurrency() const
+{
+	return apiToCurrency;
+}
+
+std::string alphavantage::api::IAPIParamToCurrency::getAsUrlParam() const
+{
+	return "to_currency=" + apiToCurrency;
+}
+
+IAPIParamFromSymbol::IAPIParamFromSymbol(const std::string& from_symbol)
+	:apiFromSymbol(from_symbol)
+{
+}
+
+std::string alphavantage::api::IAPIParamFromSymbol::getApiFromSymbol() const
+{
+	return apiFromSymbol;
+}
+
+std::string alphavantage::api::IAPIParamFromSymbol::getAsUrlParam() const
+{
+	return "from_symbol=" + apiFromSymbol;
+}
+
+IAPIParamToSymbol::IAPIParamToSymbol(const std::string& to_symbol)
+	:apiToSymbol(to_symbol)
+{
+}
+
+std::string alphavantage::api::IAPIParamToSymbol::getApiToSymbol() const
+{
+	return apiToSymbol;
+}
+
+std::string alphavantage::api::IAPIParamToSymbol::getAsUrlParam() const
+{
+	return "to_symbol=" + apiToSymbol;
+}

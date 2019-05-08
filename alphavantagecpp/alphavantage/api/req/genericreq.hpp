@@ -16,15 +16,23 @@ namespace alphavantage::req {
 
 	public:
 
-		IGenericRequest(const std::string& function, const std::string& datatype, const std::string& key);
+		IGenericRequest(const std::string& function, const std::string& key);
 		virtual ~IGenericRequest() = default;
 
-		virtual std::string load() const;
+		virtual std::string load();
 		virtual std::string getUrl() const;
+
+		inline bool succeded() const {
+			return lastRequestSucceded;
+		}
 
 	protected:
 
 		std::vector<std::shared_ptr<alphavantage::api::IAPIParam>> urlParameters;
+
+	private:
+
+		bool lastRequestSucceded = false;
 
 	};
 }

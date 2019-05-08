@@ -3,7 +3,7 @@
 using namespace alphavantage::network;
 using namespace alphavantage::network::http;
 
-int CurlRequest::send(const std::string& url, char* buf, size_t szbuf) {
+int CurlRequest::send(const std::string& url, char* buf, size_t szbuf, long* phttpStatusCode) {
 
 	if (!buf || szbuf <= 0) return false;
 
@@ -30,6 +30,13 @@ int CurlRequest::send(const std::string& url, char* buf, size_t szbuf) {
 		curl_easy_setopt(curl, CURLOPT_WRITEDATA, this);
 
 		res = curl_easy_perform(curl);
+
+		if (res == CURLE_OK) {
+			curl_easy_getinfo(curl, CURLINFO_RESPONSE_CODE, phttpStatusCode);
+		}
+		else {
+			*phttpStatusCode = -1;
+		}
 
 		curl_easy_cleanup(curl);
 	}
@@ -64,7 +71,8 @@ bool Request::send(std::string& response) const {
 
 	std::unique_ptr<char[]> buf = std::make_unique<char[]>(CURL_MAX_RSP_SIZE);
 
-	int readBytes = httpreq.send(url, buf.get(), CURL_MAX_RSP_SIZE);
+	long status;
+	int readBytes = httpreq.send(url, buf.get(), CURL_MAX_RSP_SIZE, &status);
 
 	if (readBytes == -1) return false;
 
