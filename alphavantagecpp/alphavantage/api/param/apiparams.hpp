@@ -11,3 +11,4 @@
 #include "apitocurrency.hpp"
 #include "apifromsymbol.hpp"
 #include "apitosymbol.hpp"
+#include "apimarket.hpp"
