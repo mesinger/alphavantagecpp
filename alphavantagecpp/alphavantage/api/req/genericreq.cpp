@@ -38,7 +38,7 @@ std::string alphavantage::req::IGenericRequest::getUrl() const
 
 	url += "?" + urlParameters[0]->getAsUrlParam();
 
-	for (int i = 1; i < urlParameters.size(); i++) {
+	for (size_t i = 1; i < urlParameters.size(); i++) {
 
 		url += "&" + urlParameters[i]->getAsUrlParam();
 	}

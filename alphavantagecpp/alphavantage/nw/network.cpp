@@ -11,7 +11,7 @@ int CurlRequest::send(const std::string& url, char* buf, size_t szbuf, long* pht
 	szCalleeBuffer = szbuf;
 
 	CURL * curl;
-	CURLcode res;
+	CURLcode res = CURLE_OBSOLETE;
 
 	curl_global_init(CURL_GLOBAL_DEFAULT);
 	curl = curl_easy_init();
