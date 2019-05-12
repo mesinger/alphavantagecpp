@@ -1,6 +1,6 @@
 #pragma once
 
-#include "api/req/genericreq.hpp"
+#include "api/genericreq.hpp"
 
 namespace alphavantage::req {
 
