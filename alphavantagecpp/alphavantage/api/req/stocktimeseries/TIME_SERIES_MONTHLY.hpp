@@ -8,7 +8,7 @@ namespace alphavantage::req {
 
 	public:
 
-		TIME_SERIES_MONTHLY(const std::string& symbol, const std::string& key, const std::string& datatype = API_DATATYPE_JSON_STR);
+		TIME_SERIES_MONTHLY(const std::string& symbol, const std::string& key, const std::string& datatype = API_DATATYPE_JSON);
 		virtual ~TIME_SERIES_MONTHLY() = default;
 
 	};

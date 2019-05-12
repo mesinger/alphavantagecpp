@@ -2,13 +2,12 @@
 #include "nw/network.hpp"
 #include "util/stringutil.hpp"
 
-using namespace alphavantage::api;
 namespace nw = alphavantage::network;
 
 alphavantage::req::IGenericRequest::IGenericRequest(const std::string& function, const std::string& key)
 {
-	addToUrl(IAPIParamFunction, function);
-	addToUrl(IAPIParamApikey, key);
+	params[API_FUNCTION] = function;
+	params[API_APIKEY] = key;
 }
 
 std::string alphavantage::req::IGenericRequest::load()
@@ -36,11 +35,17 @@ std::string alphavantage::req::IGenericRequest::getUrl() const
 {
 	std::string url = "https://www.alphavantage.co/query";
 
-	url += "?" + urlParameters[0]->getAsUrlParam();
+	auto it = params.cbegin();
 
-	for (size_t i = 1; i < urlParameters.size(); i++) {
+	auto addToUrl = [&url](std::map<std::string, std::string>::const_iterator & it, const std::string getParamSymb) {
+		url += getParamSymb + it->first + "=" + it->second;
+	};
 
-		url += "&" + urlParameters[i]->getAsUrlParam();
+	addToUrl(it, "?");
+
+	for (++it; it != params.cend(); ++it) {
+
+		addToUrl(it, "&");
 	}
 
 	return url;

@@ -8,7 +8,7 @@ namespace alphavantage::req {
 
 	public:
 
-		Search_Endpoint(const std::string& keywords, const std::string& key, const std::string& datatype = API_DATATYPE_JSON_STR);
+		Search_Endpoint(const std::string& keywords, const std::string& key, const std::string& datatype = API_DATATYPE_JSON);
 		virtual ~Search_Endpoint() = default;
 
 	};

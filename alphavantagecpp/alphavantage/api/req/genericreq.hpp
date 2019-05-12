@@ -1,11 +1,8 @@
 #pragma once
 
-#include "api/param/apiparams.hpp"
-#include <vector>
-#include <memory>
-
-//defines to add url parameters
-#define addToUrl(cls, v) urlParameters.emplace_back(std::make_shared<cls>(v))
+#include <map>
+#include <string>
+#include "api/param/url.hpp"
 
 namespace alphavantage::req {
 
@@ -28,7 +25,7 @@ namespace alphavantage::req {
 
 	protected:
 
-		std::vector<std::shared_ptr<alphavantage::api::IAPIParam>> urlParameters;
+		std::map<std::string, std::string> params;
 
 	private:
 
