@@ -318,3 +318,109 @@ TRIX::TRIX(const std::string& symbol, const std::string& interval, const std::st
 	params[API_SERIES_TYPE] = series_type;
 	params[API_DATATYPE] = datatype;
 }
+
+ULTOSC::ULTOSC(const std::string& symbol, const std::string& interval, const std::string& key, const std::string& time_period1, const std::string& time_period2, const std::string& time_period3, const std::string& datatype)
+	:IGenericRequest("ULTOSC", key)
+{
+	params[API_SYMBOL] = symbol;
+	params[API_INTERVAL] = interval;
+	params[API_TIMEPERIOD1] = time_period1;
+	params[API_TIMEPERIOD2] = time_period2;
+	params[API_TIMEPERIOD3] = time_period3;
+	params[API_DATATYPE] = datatype;
+}
+
+DX::DX(const std::string& symbol, const std::string& interval, const std::string& time_period, const std::string& key, const std::string& datatype)
+	:IGenericRequest("DX", key)
+{
+	params[API_SYMBOL] = symbol;
+	params[API_INTERVAL] = interval;
+	params[API_TIME_PERIOD] = time_period;
+	params[API_DATATYPE] = datatype;
+}
+
+MINUS_DI::MINUS_DI(const std::string& symbol, const std::string& interval, const std::string& time_period, const std::string& key, const std::string& datatype)
+	:IGenericRequest("MINUS_DI", key)
+{
+	params[API_SYMBOL] = symbol;
+	params[API_INTERVAL] = interval;
+	params[API_TIME_PERIOD] = time_period;
+	params[API_DATATYPE] = datatype;
+}
+
+PLUS_DI::PLUS_DI(const std::string& symbol, const std::string& interval, const std::string& time_period, const std::string& key, const std::string& datatype)
+	:IGenericRequest("PLUS_DI", key)
+{
+	params[API_SYMBOL] = symbol;
+	params[API_INTERVAL] = interval;
+	params[API_TIME_PERIOD] = time_period;
+	params[API_DATATYPE] = datatype;
+}
+
+MINUS_DM::MINUS_DM(const std::string& symbol, const std::string& interval, const std::string& time_period, const std::string& key, const std::string& datatype)
+	:IGenericRequest("MINUS_DM", key)
+{
+	params[API_SYMBOL] = symbol;
+	params[API_INTERVAL] = interval;
+	params[API_TIME_PERIOD] = time_period;
+	params[API_DATATYPE] = datatype;
+}
+
+PLUS_DM::PLUS_DM(const std::string& symbol, const std::string& interval, const std::string& time_period, const std::string& key, const std::string& datatype)
+	:IGenericRequest("PLUS_DM", key)
+{
+	params[API_SYMBOL] = symbol;
+	params[API_INTERVAL] = interval;
+	params[API_TIME_PERIOD] = time_period;
+	params[API_DATATYPE] = datatype;
+}
+
+BBANDS::BBANDS(const std::string& symbol, const std::string& interval, const std::string& time_period, const std::string& series_type, const std::string& key, const std::string& nbdevup, const std::string& nbdevdn, const std::string& matype, const std::string& datatype)
+	:IGenericRequest("BBANDS", key)
+{
+	params[API_SYMBOL] = symbol;
+	params[API_INTERVAL] = interval;
+	params[API_TIME_PERIOD] = time_period;
+	params[API_SERIES_TYPE] = series_type;
+	params[API_NBDEVUP] = nbdevup;
+	params[API_NBDEVDN] = nbdevdn;
+	params[API_MATYPE] = matype;
+	params[API_DATATYPE] = datatype;
+}
+
+MIDPOINT::MIDPOINT(const std::string& symbol, const std::string& interval, const std::string& time_period, const std::string& series_type, const std::string& key, const std::string& datatype)
+	:IGenericRequest("MIDPOINT", key)
+{
+	params[API_SYMBOL] = symbol;
+	params[API_INTERVAL] = interval;
+	params[API_TIME_PERIOD] = time_period;
+	params[API_SERIES_TYPE] = series_type;
+	params[API_DATATYPE] = datatype;
+}
+
+MIDPRICE::MIDPRICE(const std::string& symbol, const std::string& interval, const std::string& time_period, const std::string& key, const std::string& datatype)
+	:IGenericRequest("MIDPRICE", key)
+{
+	params[API_SYMBOL] = symbol;
+	params[API_INTERVAL] = interval;
+	params[API_TIME_PERIOD] = time_period;
+	params[API_DATATYPE] = datatype;
+}
+
+SAR::SAR(const std::string& symbol, const std::string& interval, const std::string& key, const std::string& acceleration, const std::string& maximum, const std::string& datatype)
+	:IGenericRequest("SAR", key)
+{
+	params[API_SYMBOL] = symbol;
+	params[API_INTERVAL] = interval;
+	params[API_ACCELERATION] = acceleration;
+	params[API_MAXIMUM] = maximum;
+	params[API_DATATYPE] = datatype;
+}
+
+TRANGE::TRANGE(const std::string& symbol, const std::string& interval, const std::string& key, const std::string& datatype)
+	:IGenericRequest("TRANGE", key)
+{
+	params[API_SYMBOL] = symbol;
+	params[API_INTERVAL] = interval;
+	params[API_DATATYPE] = datatype;
+}

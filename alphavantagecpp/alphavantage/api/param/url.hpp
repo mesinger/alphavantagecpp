@@ -32,6 +32,13 @@
 #define API_SLOWDMATYPE "slowdmatype"
 #define API_FASTDMATYPE "fastdmatype"
 #define API_MATYPE "matype"
+#define API_TIMEPERIOD1 "timeperiod1"
+#define API_TIMEPERIOD2 "timeperiod2"
+#define API_TIMEPERIOD3 "timeperiod3"
+#define API_NBDEVUP "nbdevup"
+#define API_NBDEVDN "nbdevdn"
+#define API_ACCELERATION "acceleration"
+#define API_MAXIMUM "maximum"
 
 // parameter values
 
