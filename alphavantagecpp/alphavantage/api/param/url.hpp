@@ -24,6 +24,14 @@
 #define API_FASTMATYPE "fastmatype"
 #define API_SLOWMATYPE "slowmatype"
 #define API_SIGNALMATYPE "signalmatype"
+#define API_FASTKPERIOD "fastkperiod"
+#define API_FASTDPERIOD "fastdperiod"
+#define API_SLOWKPERIOD "slowkperiod"
+#define API_SLOWDPERIOD "slowdperiod"
+#define API_SLOWKMATYPE "slowkmatype"
+#define API_SLOWDMATYPE "slowdmatype"
+#define API_FASTDMATYPE "fastdmatype"
+#define API_MATYPE "matype"
 
 // parameter values
 
