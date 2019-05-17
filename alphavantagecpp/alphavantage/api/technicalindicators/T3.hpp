@@ -2,7 +2,7 @@
 
 #include "api/genericreq.hpp"
 
-namespace alphavantage::req {
+namespace alphavantage::api {
 
 	class T3 : public IGenericRequest {
 

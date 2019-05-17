@@ -2,7 +2,7 @@
 
 #include "api/genericreq.hpp"
 
-namespace alphavantage::req {
+namespace alphavantage::api {
 
 	class DIGITAL_CURRENCY_DAILY : public IGenericRequest {
 

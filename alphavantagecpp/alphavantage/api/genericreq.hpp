@@ -4,7 +4,7 @@
 #include <string>
 #include "api/param/url.hpp"
 
-namespace alphavantage::req {
+namespace alphavantage::api {
 
 	/*
 	most generic request to alphavantage

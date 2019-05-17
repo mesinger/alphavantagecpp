@@ -1,6 +1,6 @@
 #include "forex.hpp"
 
-using namespace alphavantage::req;
+using namespace alphavantage::api;
 
 CURRENCY_EXCHANGE_RATE::CURRENCY_EXCHANGE_RATE(const std::string& from_currency, const std::string& to_currency, const std::string& key)
 	:IGenericRequest("CURRENCY_EXCHANGE_RATE", key)

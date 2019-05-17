@@ -1,6 +1,6 @@
 #include "stocktimeseries.hpp"
 
-using namespace alphavantage::req;
+using namespace alphavantage::api;
 
 Quote_Endpoint::Quote_Endpoint(const std::string& symbol, const std::string& key, const std::string& datatype)
 	:IGenericRequest("GLOBAL_QUOTE", key)

@@ -2,7 +2,7 @@
 
 #include "api/genericreq.hpp"
 
-namespace alphavantage::req {
+namespace alphavantage::api {
 
 	class TIME_SERIES_DAILY_ADJUSTED : public IGenericRequest {
 

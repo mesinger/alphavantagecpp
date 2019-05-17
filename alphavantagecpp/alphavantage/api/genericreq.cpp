@@ -4,13 +4,15 @@
 
 namespace nw = alphavantage::network;
 
-alphavantage::req::IGenericRequest::IGenericRequest(const std::string& function, const std::string& key)
+using namespace alphavantage::api;
+
+IGenericRequest::IGenericRequest(const std::string& function, const std::string& key)
 {
 	params[API_FUNCTION] = function;
 	params[API_APIKEY] = key;
 }
 
-std::string alphavantage::req::IGenericRequest::load()
+std::string IGenericRequest::load()
 {
 	auto conn = nw::Request(getUrl());
 
@@ -31,7 +33,7 @@ std::string alphavantage::req::IGenericRequest::load()
 	return "";
 }
 
-std::string alphavantage::req::IGenericRequest::getUrl() const
+std::string IGenericRequest::getUrl() const
 {
 	std::string url = "https://www.alphavantage.co/query";
 
