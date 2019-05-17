@@ -424,3 +424,101 @@ TRANGE::TRANGE(const std::string& symbol, const std::string& interval, const std
 	params[API_INTERVAL] = interval;
 	params[API_DATATYPE] = datatype;
 }
+
+ATR::ATR(const std::string& symbol, const std::string& interval, const std::string& time_period, const std::string& key, const std::string& datatype)
+	:IGenericRequest("ATR", key)
+{
+	params[API_SYMBOL] = symbol;
+	params[API_INTERVAL] = interval;
+	params[API_TIME_PERIOD] = time_period;
+	params[API_DATATYPE] = datatype;
+}
+
+NATR::NATR(const std::string& symbol, const std::string& interval, const std::string& time_period, const std::string& key, const std::string& datatype)
+	:IGenericRequest("NATR", key)
+{
+	params[API_SYMBOL] = symbol;
+	params[API_INTERVAL] = interval;
+	params[API_TIME_PERIOD] = time_period;
+	params[API_DATATYPE] = datatype;
+}
+
+AD::AD(const std::string& symbol, const std::string& interval, const std::string& key, const std::string& datatype)
+	:IGenericRequest("AD", key)
+{
+	params[API_SYMBOL] = symbol;
+	params[API_INTERVAL] = interval;
+	params[API_DATATYPE] = datatype;
+}
+
+ADOSC::ADOSC(const std::string& symbol, const std::string& interval, const std::string& key, const std::string& fastperiod, const std::string& slowperiod, const std::string& datatype)
+	:IGenericRequest("ADOSC", key)
+{
+	params[API_SYMBOL] = symbol;
+	params[API_INTERVAL] = interval;
+	params[API_FASTPERIOD] = fastperiod;
+	params[API_SLOWPERIOD] = slowperiod;
+	params[API_DATATYPE] = datatype;
+}
+
+OBV::OBV(const std::string& symbol, const std::string& interval, const std::string& key, const std::string& datatype)
+	:IGenericRequest("OBV", key)
+{
+	params[API_SYMBOL] = symbol;
+	params[API_INTERVAL] = interval;
+	params[API_DATATYPE] = datatype;
+}
+
+HT_TRENDLINE::HT_TRENDLINE(const std::string& symbol, const std::string& interval, const std::string& series_type, const std::string& key, const std::string& datatype)
+	:IGenericRequest("HT_TRENDLINE", key)
+{
+	params[API_SYMBOL] = symbol;
+	params[API_INTERVAL] = interval;
+	params[API_SERIES_TYPE] = series_type;
+	params[API_DATATYPE] = datatype;
+}
+
+HT_SINE::HT_SINE(const std::string& symbol, const std::string& interval, const std::string& series_type, const std::string& key, const std::string& datatype)
+	:IGenericRequest("HT_SINE", key)
+{
+	params[API_SYMBOL] = symbol;
+	params[API_INTERVAL] = interval;
+	params[API_SERIES_TYPE] = series_type;
+	params[API_DATATYPE] = datatype;
+}
+
+HT_TRENDMODE::HT_TRENDMODE(const std::string& symbol, const std::string& interval, const std::string& series_type, const std::string& key, const std::string& datatype)
+	:IGenericRequest("HT_TRENDMODE", key)
+{
+	params[API_SYMBOL] = symbol;
+	params[API_INTERVAL] = interval;
+	params[API_SERIES_TYPE] = series_type;
+	params[API_DATATYPE] = datatype;
+}
+
+HT_DCPERIOD::HT_DCPERIOD(const std::string& symbol, const std::string& interval, const std::string& series_type, const std::string& key, const std::string& datatype)
+	:IGenericRequest("HT_DCPERIOD", key)
+{
+	params[API_SYMBOL] = symbol;
+	params[API_INTERVAL] = interval;
+	params[API_SERIES_TYPE] = series_type;
+	params[API_DATATYPE] = datatype;
+}
+
+HT_DCPHASE::HT_DCPHASE(const std::string& symbol, const std::string& interval, const std::string& series_type, const std::string& key, const std::string& datatype)
+	:IGenericRequest("HT_DCPHASE", key)
+{
+	params[API_SYMBOL] = symbol;
+	params[API_INTERVAL] = interval;
+	params[API_SERIES_TYPE] = series_type;
+	params[API_DATATYPE] = datatype;
+}
+
+HT_PHASOR::HT_PHASOR(const std::string& symbol, const std::string& interval, const std::string& series_type, const std::string& key, const std::string& datatype)
+	:IGenericRequest("HT_PHASOR", key)
+{
+	params[API_SYMBOL] = symbol;
+	params[API_INTERVAL] = interval;
+	params[API_SERIES_TYPE] = series_type;
+	params[API_DATATYPE] = datatype;
+}
