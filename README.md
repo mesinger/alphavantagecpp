@@ -1,4 +1,4 @@
-# alphavantagecpp (work in progress)
+# alphavantagecpp
 Cross platform C++ wrapper for [Alphavantage](https://www.alphavantage.co)
 
 ## Design goals
