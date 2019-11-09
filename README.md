@@ -17,7 +17,7 @@ With [nlohmann/json](https://github.com/nlohmann/json) you could do something li
 auto request = av::TIME_SERIES_DAILY("AAPL", "apikey");
 
 // sends the response to alphavantage and returns the json/csv response as string
-std::optional<std::string> response = req.fetch();
+std::optional<std::string> response = request.fetch();
 
 if (response) {
 
