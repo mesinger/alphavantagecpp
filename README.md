@@ -1,5 +1,5 @@
 # alphavantagecpp
-Cross platform C++ wrapper for [Alphavantage](https://www.alphavantage.co)
+Cross platform C++ 17 wrapper for [Alphavantage](https://www.alphavantage.co)
 
 ## Design goals
 alphavantagecpp is designed to work like the [official API documentation](https://www.alphavantage.co/documentation/) of Alphavantage. Naming of functions and parameters are exactly as mentioned in the documentation. All optional parameters have their corresponding default values.
@@ -17,13 +17,13 @@ With [nlohmann/json](https://github.com/nlohmann/json) you could do something li
 auto request = av::TIME_SERIES_DAILY("AAPL", "apikey");
 
 // sends the response to alphavantage and returns the json/csv response as string
-std::string rsp = request.load();
+std::optional<std::string> response = req.fetch();
 
-if (request.succeded()) {
+if (response) {
 
-	auto json = nlohmann::json::parse(rsp);
+	auto jsonData = nlohmann::json::parse(response);
 
-	for (const auto& entry : json["Time Series (Daily)"]) {
+	for (const auto& entry : jsonData["Time Series (Daily)"]) {
 
 		std::cout << entry["1. open"] << std::endl;
 	}
