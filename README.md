@@ -8,7 +8,8 @@ alphavantagecpp is designed to work like the [official API documentation](https:
 ```c++
 #include "alphavantage.hpp"
 ```
-network communication is implemented with [cURL](https://curl.haxx.se/libcurl/), so you will have to link their library to your project.
+network communication is implemented with [cURL](https://curl.haxx.se/libcurl/), so you will have to link their library to your project.<br>
+unit testing with [Catch2](https://github.com/catchorg/Catch2)
 
 ## Usage
 With [nlohmann/json](https://github.com/nlohmann/json) you could do something like this.
