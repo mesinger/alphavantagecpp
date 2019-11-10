@@ -21,17 +21,22 @@ std::optional<std::string> av::AlphaVantageRequest::fetch() const {
         auto [response, responseLenght, httpStatusCode] = httpResponse.value();
 
         if(httpStatusCode != HTTP_STATUS_OK) {
-            std::cerr << "alphavantage request returned HTTP Status Code " << httpStatusCode << std::endl;
+            std::cerr << "Alpha Vantage request returned HTTP Status Code " << httpStatusCode << std::endl;
             return std::nullopt;
         }
 
         if(responseLenght == 0) {
-            std::cerr << "alphavantage request was empty" << std::endl;
+            std::cerr << "Alpha Vantage request was empty" << std::endl;
             return std::nullopt;
         }
 
-        if(av::util::string::containsPatterns(response, {"error", "invalid"}, false)) {
-            std::cerr << "Invalid Alphavantage API call" << std::endl;
+        if(av::util::string::containsPatterns(response, {"error", "invalid"})) {
+            std::cerr << "Invalid Alpha Vantage API call" << std::endl;
+            return std::nullopt;
+        }
+
+        if(av::util::string::containsPatterns(response, {"Thank you for using Alpha Vantage!", "Our standard API call frequency"})) {
+            std::cerr << "Alpha Vantage API call frequency exceeded" << std::endl;
             return std::nullopt;
         }
 

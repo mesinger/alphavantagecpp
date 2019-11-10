@@ -4,5 +4,5 @@
 #include <vector>
 
 namespace av::util::string {
-    bool containsPatterns(const std::string& target, const std::vector<std::string>& patterns, bool caseSensitive = true);
+    bool containsPatterns(const std::string& target, const std::vector<std::string>& patterns);
 }

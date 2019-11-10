@@ -1,16 +1,17 @@
 #include "alphavantagecpp/util/strings.hpp"
 #include <algorithm>
 
-bool av::util::string::containsPatterns(const std::string &target, const std::vector<std::string> &patterns,
-                                        bool caseSensitive) {
+bool av::util::string::containsPatterns(const std::string &target, const std::vector<std::string> &patterns) {
 
-    std::string targetCopy = target;
-
-    if (!caseSensitive)
-        std::transform(targetCopy.begin(), targetCopy.end(), targetCopy.begin(), ::tolower);
+    std::string targetLowerCase = target;
+    std::transform(targetLowerCase.begin(), targetLowerCase.end(), targetLowerCase.begin(), ::tolower);
 
     for (const auto& pattern : patterns) {
-        if (targetCopy.find(pattern) != std::string::npos)
+
+        auto patternLowerCase = pattern;
+        std::transform(patternLowerCase.begin(), patternLowerCase.end(), patternLowerCase.begin(), ::tolower);
+
+        if (targetLowerCase.find(patternLowerCase) != std::string::npos)
             return true;
     }
 
